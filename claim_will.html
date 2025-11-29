@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Claim Will | Cardano Will DApp</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body { font-family: Arial, sans-serif; max-width: 600px; margin: 2rem auto; font-size: 18px; }
+    label { display: block; margin-top: 1rem; font-weight: bold; font-size: 1.1rem; }
+    input, button { width: 100%; padding: 0.6rem; margin-top: 0.25rem; font-size: 1rem; }
+    button { cursor: pointer; margin-top: 1rem; }
+    #status { margin-top: 1rem; font-weight: bold; font-size: 1.1rem; }
+    .action-btn { margin-top: 1.5rem; }
+  </style>
+</head>
+<body>
+  <h1>Claim Will</h1>
+
+  <label for="beneficiaries">Your PubKeyHash:</label>
+  <input type="text" id="beneficiaries" placeholder="Enter your PubKeyHash">
+
+  <label for="claimAmount">Amount to Claim (ADA):</label>
+  <input type="number" id="claimAmount" placeholder="e.g., 500">
+
+  <button id="claimWillBtn" disabled>Claim Will</button>
+
+  <div id="status"></div>
+
+  <div class="action-btn">
+    <button onclick="window.location.href='welcome.html'">← Back to Welcome</button>
+  </div>
+
+  <script type="module" src="will.js"></script>
+</body>
+</html>

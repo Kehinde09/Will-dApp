@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Create Will | Cardano Will DApp</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body { font-family: Arial, sans-serif; max-width: 600px; margin: 2rem auto; font-size: 18px; }
+    label { display: block; margin-top: 1rem; font-weight: bold; font-size: 1.1rem; }
+    input, button, textarea { width: 100%; padding: 0.6rem; margin-top: 0.25rem; font-size: 1rem; }
+    button { cursor: pointer; margin-top: 1rem; }
+    #status { margin-top: 1rem; font-weight: bold; font-size: 1.1rem; }
+    .action-btn { display: flex; justify-content: space-between; gap: 1rem; margin-top: 1.5rem; }
+    .action-btn button { flex: 1; font-size: 1rem; text-align: center; padding: 0.6rem; }
+  </style>
+</head>
+<body>
+  <h1>Create Will</h1>
+
+  <button id="connect-btn">Connect Wallet</button>
+  <button id="copyPubKeyBtn" disabled>Copy My PubKeyHash</button>
+
+  <label for="beneficiaries">Beneficiaries & Allocation (one per line: pubkey,ADA):</label>
+  <textarea id="beneficiaries" placeholder="pubkey1,500&#10;pubkey2,1500"></textarea>
+
+  <label for="unlockTime">Unlock Time:</label>
+  <input type="datetime-local" id="unlockTime">
+
+  <label>
+    <input type="checkbox" id="partialClaim">
+    Allow Partial Claim
+  </label>
+
+  <button id="createWillBtn" disabled>Create Will (Lock ADA)</button>
+
+  <div id="status"></div>
+
+  <!-- Navigation Buttons -->
+  <div class="action-btn">
+    <button onclick="window.location.href='welcome.html'">← Back to Welcome</button>
+    <button onclick="window.location.href='claim_will.html'">Next → Claim Will</button>
+  </div>
+
+  <script type="module" src="will.js"></script>
+</body>
+</html>
