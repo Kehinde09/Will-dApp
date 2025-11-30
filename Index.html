@@ -4,7 +4,81 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Cardano Will DApp | Dashboard</title>
-  <link rel="stylesheet" href="style.css">
+
+  <style>
+    :root {
+      --primary: #3b82f6;
+      --primary-hover: #2563eb;
+      --bg: #f8fafc;
+      --card-bg: white;
+      --border: #e2e8f0;
+      --radius: 14px;
+      --text-muted: #6b7280;
+    }
+
+    body {
+      margin: 0;
+      padding: 2rem;
+      font-family: Arial, sans-serif;
+      background: var(--bg);
+      color: #111;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      min-height: 100vh;
+    }
+
+    .container {
+      max-width: 800px;
+      width: 100%;
+      text-align: center;
+    }
+
+    h1 {
+      margin-bottom: 2.5rem;
+      font-size: 2.4rem;
+      font-weight: bold;
+    }
+
+    .dashboard {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.8rem;
+      padding: 0 1rem;
+    }
+
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      padding: 2rem;
+      border-radius: var(--radius);
+      cursor: pointer;
+      text-align: left;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      box-shadow: 0 4px 18px rgba(0,0,0,0.06);
+    }
+
+    .card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 8px 28px rgba(0,0,0,0.12);
+      border-color: var(--primary);
+    }
+
+    .card h2 {
+      margin-top: 0;
+      margin-bottom: 0.7rem;
+      font-size: 1.6rem;
+      color: var(--primary);
+    }
+
+    .card p {
+      margin: 0;
+      font-size: 1.05rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+  </style>
+
 </head>
 
 <body>
@@ -13,6 +87,7 @@
     <h1>Cardano Will DApp</h1>
 
     <div class="dashboard">
+
       <div class="card" onclick="window.location.href='create_will.html'">
         <h2>Create Will</h2>
         <p>Set up a secure blockchain-based will for your beneficiaries.</p>
@@ -22,7 +97,9 @@
         <h2>Claim Will</h2>
         <p>Verify your identity and claim your allocated inheritance.</p>
       </div>
+
     </div>
+
   </div>
 
 </body>
