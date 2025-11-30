@@ -3,134 +3,134 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Claim Will | Cardano Will DApp</title>
+  <title>Welcome | Cardano Will DApp</title>
 
   <style>
-    :root {
-      --primary: #3b82f6;
-      --primary-hover: #2563eb;
-      --border: #d1d5db;
-      --bg-light: #f8fafc;
-      --radius: 10px;
+    /* Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     }
 
     body {
-      font-family: Arial, sans-serif;
-      max-width: 600px;
-      margin: 3rem auto;
-      padding: 1rem;
-      font-size: 18px;
-      background: var(--bg-light);
-      color: #111;
-    }
-
-    h1 {
+      min-height: 100vh;
+      background: radial-gradient(circle at top, #1d1f33, #0a0f1f 70%);
+      color: #f0f4f8;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 2rem;
       text-align: center;
-      margin-bottom: 2rem;
-      font-size: 2rem;
     }
 
-    label {
-      display: block;
-      margin-top: 1.2rem;
-      font-weight: bold;
-      font-size: 1.1rem;
+    header h1 {
+      font-size: 3.2rem;
+      color: #60a5fa;
+      text-shadow: 0 0 18px rgba(96,165,250,0.5);
+      margin-bottom: 1.5rem;
+      animation: fadeInDown 1s ease forwards;
     }
 
-    input {
-      width: 100%;
-      padding: 0.75rem;
-      margin-top: 0.4rem;
-      font-size: 1rem;
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      transition: 0.2s ease;
+    main h2 {
+      font-size: 1.9rem;
+      max-width: 600px;
+      color: #a5c2ff;
+      opacity: 0.9;
+      animation: fadeIn 1.2s ease forwards;
+      margin-bottom: 2.5rem;
     }
 
-    input:focus {
-      border-color: var(--primary);
-      outline: none;
-      box-shadow: 0 0 0 3px rgba(59,130,246,0.25);
-      background: #fff;
+    .button-group {
+      display: flex;
+      gap: 2rem;
+      flex-wrap: wrap;
+      justify-content: center;
+      animation: fadeIn 1.6s ease forwards;
     }
 
-    button {
-      width: 100%;
-      padding: 0.85rem;
-      margin-top: 1.3rem;
-      font-size: 1.1rem;
-      border: none;
-      border-radius: var(--radius);
-      cursor: pointer;
-      transition: 0.2s ease;
-      background: var(--primary);
+    .btn-primary, .btn-secondary {
+      padding: 1rem 2.5rem;
+      border-radius: 12px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1.15rem;
+      transition: 0.3s ease;
+      box-shadow: 0 6px 14px rgba(0,0,0,0.45);
+      border: 1px solid transparent;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #3b82f6, #2563eb);
       color: white;
+      border-color: #3b82f6;
     }
 
-    button:hover:not(:disabled) {
-      background: var(--primary-hover);
+    .btn-primary:hover {
+      transform: translateY(-4px) scale(1.05);
+      box-shadow: 0 8px 20px rgba(59,130,246,0.55);
     }
 
-    button:disabled {
-      background: #94a3b8;
-      cursor: not-allowed;
-    }
-
-    .secondary-btn {
-      background: white;
-      border: 1px solid var(--primary);
-      color: var(--primary);
-      font-weight: bold;
-    }
-
-    .secondary-btn:hover {
-      background: var(--primary);
+    .btn-secondary {
+      background: linear-gradient(135deg, #10b981, #059669);
       color: white;
+      border-color: #10b981;
     }
 
-    #status {
-      margin-top: 1.2rem;
-      font-weight: bold;
-      min-height: 1.2rem;
+    .btn-secondary:hover {
+      transform: translateY(-4px) scale(1.05);
+      box-shadow: 0 8px 20px rgba(16,185,129,0.5);
     }
 
-    .action-btn {
-      margin-top: 2rem;
+    footer {
+      margin-top: 4rem;
+      font-size: 0.9rem;
+      color: #9ca3af;
+      opacity: 0.75;
+      animation: fadeIn 2s ease;
+    }
+
+    /* Animations */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(15px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeInDown {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Responsive */
+    @media (max-width: 500px) {
+      header h1 { font-size: 2.4rem; }
+      main h2 { font-size: 1.4rem; }
+      .button-group { flex-direction: column; gap: 1rem; }
+      .btn-primary, .btn-secondary { width: 100%; }
     }
   </style>
 </head>
 
 <body>
 
-  <h1>Claim Will</h1>
+  <header>
+    <h1>Cardano Will DApp</h1>
+  </header>
 
-  <label for="beneficiaries">Your PubKeyHash:</label>
-  <input 
-    type="text" 
-    id="beneficiaries" 
-    placeholder="Enter your PubKeyHash (e.g., addr...)" 
-    autocomplete="off"
-  >
+  <main>
+    <h2>Securely manage your legacy with trustless blockchain technology</h2>
 
-  <label for="claimAmount">Amount to Claim (ADA):</label>
-  <input 
-    type="number" 
-    id="claimAmount" 
-    placeholder="e.g., 500" 
-    min="1"
-    step="0.01"
-  >
+    <div class="button-group">
+      <a href="create-will.html" class="btn-primary">Create Will</a>
+      <a href="claim-will.html" class="btn-secondary">Claim Will</a>
+    </div>
+  </main>
 
-  <button id="claimWillBtn" disabled>Claim Will</button>
+  <footer>
+    &copy; 2025 Coxygen Global Will DApp. All Rights Reserved.
+  </footer>
 
-  <div id="status"></div>
-
-  <div class="action-btn">
-    <button class="secondary-btn" onclick="window.location.href='welcome.html'">
-      ← Back to Welcome
-    </button>
-  </div>
-
-  <script type="module" src="will.js"></script>
 </body>
 </html>
