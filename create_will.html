@@ -3,45 +3,166 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Create Will | Cardano Will DApp</title>
-  <link rel="stylesheet" href="style.css">
+  <title>Claim Will | Cardano DApp</title>
+
   <style>
-    body { font-family: Arial, sans-serif; max-width: 600px; margin: 2rem auto; font-size: 18px; }
-    label { display: block; margin-top: 1rem; font-weight: bold; font-size: 1.1rem; }
-    input, button, textarea { width: 100%; padding: 0.6rem; margin-top: 0.25rem; font-size: 1rem; }
-    button { cursor: pointer; margin-top: 1rem; }
-    #status { margin-top: 1rem; font-weight: bold; font-size: 1.1rem; }
-    .action-btn { display: flex; justify-content: space-between; gap: 1rem; margin-top: 1.5rem; }
-    .action-btn button { flex: 1; font-size: 1rem; text-align: center; padding: 0.6rem; }
+    :root {
+      --bg: #0c0f14;
+      --card: #141820;
+      --border: #2a2f3a;
+      --text: #e5e7eb;
+      --text-muted: #9ca3af;
+      --primary: #3b82f6;
+      --primary-hover: #1d4ed8;
+      --radius: 14px;
+      --glow: 0 0 12px rgba(59,130,246,0.45);
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: var(--bg);
+      margin: 0;
+      padding: 2rem;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      color: var(--text);
+      min-height: 100vh;
+    }
+
+    .card {
+      background: var(--card);
+      width: 100%;
+      max-width: 600px;
+      padding: 2rem;
+      border-radius: var(--radius);
+      box-shadow: 0 0 25px rgba(0,0,0,0.4);
+      border: 1px solid var(--border);
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 2rem;
+      margin-top: 0;
+      color: var(--text);
+    }
+
+    label {
+      display: block;
+      margin-top: 1.5rem;
+      font-weight: bold;
+      font-size: 1.05rem;
+      color: var(--text);
+    }
+
+    input {
+      width: 100%;
+      padding: 0.75rem;
+      margin-top: 0.45rem;
+      font-size: 1rem;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      background: #0f131a;
+      color: var(--text);
+      transition: 0.2s;
+    }
+
+    input:focus {
+      border-color: var(--primary);
+      background: #0a0d12;
+      outline: none;
+      box-shadow: var(--glow);
+    }
+
+    small {
+      display: block;
+      margin-top: 0.3rem;
+      color: var(--text-muted);
+      font-size: 0.85rem;
+    }
+
+    .btn {
+      width: 100%;
+      padding: 0.9rem;
+      margin-top: 2rem;
+      font-size: 1.05rem;
+      border: none;
+      border-radius: var(--radius);
+      cursor: pointer;
+      background: var(--primary);
+      color: white;
+      font-weight: bold;
+      transition: 0.2s;
+      box-shadow: var(--glow);
+    }
+
+    .btn:hover {
+      background: var(--primary-hover);
+    }
+
+    .btn:disabled {
+      background: #2f3848;
+      box-shadow: none;
+      cursor: not-allowed;
+    }
+
+    .back-btn {
+      margin-top: 1.6rem;
+      background: transparent;
+      border: 2px solid var(--primary);
+      color: var(--primary);
+      box-shadow: none;
+    }
+
+    .back-btn:hover {
+      background: var(--primary);
+      color: white;
+    }
+
+    #status {
+      margin-top: 1.5rem;
+      font-weight: bold;
+      text-align: center;
+      min-height: 1.2em;
+      color: var(--text);
+    }
+
+    /* Smooth animations */
+    .card, input, .btn {
+      transition: all 0.25s ease;
+    }
   </style>
 </head>
+
 <body>
-  <h1>Create Will</h1>
+  <div class="card">
+    <h1>Claim Your Will</h1>
 
-  <button id="connect-btn">Connect Wallet</button>
-  <button id="copyPubKeyBtn" disabled>Copy My PubKeyHash</button>
+    <label for="beneficiaries">Your PubKeyHash:</label>
+    <input 
+      type="text" 
+      id="beneficiaries" 
+      placeholder="Enter your PubKeyHash"
+      autocomplete="off"
+    />
+    <small>This must match the registered beneficiary PubKeyHash.</small>
 
-  <label for="beneficiaries">Beneficiaries & Allocation (one per line: pubkey,ADA):</label>
-  <textarea id="beneficiaries" placeholder="pubkey1,500&#10;pubkey2,1500"></textarea>
+    <label for="claimAmount">Amount to Claim (ADA):</label>
+    <input 
+      type="number"
+      id="claimAmount"
+      placeholder="e.g., 500"
+      min="1"
+      step="0.01"
+    />
 
-  <label for="unlockTime">Unlock Time:</label>
-  <input type="datetime-local" id="unlockTime">
+    <button class="btn" id="claimWillBtn" disabled>Claim Will</button>
 
-  <label>
-    <input type="checkbox" id="partialClaim">
-    Allow Partial Claim
-  </label>
+    <div id="status"></div>
 
-  <button id="createWillBtn" disabled>Create Will (Lock ADA)</button>
-
-  <div id="status"></div>
-
-  <!-- Navigation Buttons -->
-  <div class="action-btn">
-    <button onclick="window.location.href='welcome.html'">← Back to Welcome</button>
-    <button onclick="window.location.href='claim_will.html'">Next → Claim Will</button>
+    <button class="btn back-btn" onclick="window.location.href='welcome.html'">
+      ← Back to Welcome
+    </button>
   </div>
-
-  <script type="module" src="will.js"></script>
 </body>
 </html>
