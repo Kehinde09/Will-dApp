@@ -17,3 +17,5 @@ A decentralized application (DApp) on the Cardano blockchain for creating and cl
 
 ## Folder Structure
 
+*Date: 30 November 2025*
+*Developers:Kehinde Odukoya*
